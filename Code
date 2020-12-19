@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <cs50.h>
+#include <math.h>
+int main(void)
+
+{
+    float n = 0;
+    do
+    {
+        n = get_float("Changed owed: ");
+        //n will be the variable that prompts the user for change owed
+    }
+    while (n < 0);
+    //while user input is negative, it will re-prompt the user until a float or integer is entered. 
+    // make a code to round the dollars into cents.
+    int cents = round(n * 100);
+    //divide the total cents with the largest coin(quarters) to get the amount of quarters obtain.
+    int quarters = cents / 25;
+    //next, find the remainder after dividing by cents and divide it with dimes(the second biggest)
+    int dimes = (cents % 25) / 10;
+    //next, find the remainder and divide it with nickles
+    int nickles = (cents % 25 % 10) / 5;
+    //divide by pennies, the smallest coin
+    int pennies = (cents % 5) / 1;
+
+    // Add all the numbers to get the total coin
+    int total = quarters + dimes + nickles + pennies;
+    //print the total in the next row
+    printf("%i\n", total);
+}
